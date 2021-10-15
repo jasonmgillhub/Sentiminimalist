@@ -1,22 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Image, Text } from 'react-native';
+import { View, StyleSheet, Image, Text, Platform } from 'react-native';
 import colors from '../config/colors';
+import AppText from './AppText';
 
-function Card(props) {
+function Card({ title, subTitle, image }) {
 	return (
 		<View style={styles.card}>
-			<Image style={styles.image} source={props.image} />
-			<View
-				style={{
-					height: 100,
-					padding: 20,
-					borderBottomLeftRadius: 20,
-					borderBottomRightRadius: 20,
-					backgroundColor: colors.white,
-				}}
-			>
-				<Text style={styles.title}>{props.title}</Text>
-				<Text style={styles.price}>$100</Text>
+			<Image style={styles.image} source={image} />
+			<View style={styles.detailsContainer}>
+				<AppText style={styles.title}>{title}</AppText>
+				<AppText style={styles.subTitle}>{subTitle}</AppText>
 			</View>
 		</View>
 	);
@@ -24,22 +17,23 @@ function Card(props) {
 
 const styles = StyleSheet.create({
 	card: {
-		// backgroundColor: colors.white,
-		paddingHorizontal: 20,
-		paddingVertical: 10,
+		backgroundColor: colors.white,
+		borderRadius: 15,
+		marginBottom: 20,
+		overflow: 'hidden',
 	},
 	image: {
-		borderTopLeftRadius: 20,
-		borderTopRightRadius: 20,
 		width: '100%',
 		height: 200,
 	},
-	title: {
-		fontSize: 16,
-		marginBottom: 10,
+	detailsContainer: {
+		height: 100,
+		padding: 20,
 	},
-	price: {
-		fontSize: 16,
+	title: {
+		marginBottom: 7,
+	},
+	subTitle: {
 		fontWeight: 'bold',
 		color: colors.secondary,
 	},

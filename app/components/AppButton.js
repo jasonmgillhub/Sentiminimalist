@@ -1,31 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import colors from '../config/colors';
+import AppText from './AppText';
 
-function AppButton(props) {
-	console.log(props);
-
+function AppButton({ title, onPress, color = 'primary' }) {
 	return (
-		<View style={{ ...styles.button, ...props.style }}>
-			<Text style={styles.text}>{props.children}</Text>
-		</View>
+		<TouchableOpacity
+			style={[styles.button, { backgroundColor: colors[color] }]}
+			onPress={onPress}
+		>
+			<AppText style={styles.text}>{title}</AppText>
+		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: colors.primary,
-		height: 50,
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 25,
+		padding: 12,
+		marginVertical: 10,
 	},
 	text: {
 		color: colors.white,
 		fontWeight: 'bold',
-		fontFamily: 'Roboto',
-		fontSize: 18,
+		textTransform: 'uppercase',
 	},
 });
 

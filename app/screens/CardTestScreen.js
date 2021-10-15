@@ -7,17 +7,18 @@ function CardTestScreen(props) {
 		<View
 			style={{
 				backgroundColor: '#f8f4f4',
-				flex: 1,
+				padding: 20,
+				paddingTop: 100,
 			}}
 		>
 			<Card
 				title="Hello"
-				subTitle="Monkey"
+				subTitle="$100"
 				image={require('../assets/jacket.jpg')}
 			/>
 			<Card
 				title="Hello"
-				subTitle="Monkey"
+				subTitle="$100"
 				image={require('../assets/jacket.jpg')}
 			/>
 		</View>

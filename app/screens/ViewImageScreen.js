@@ -9,7 +9,7 @@ function ViewImageScreen(props) {
 			<MaterialCommunityIcons
 				style={styles.closeIcon}
 				name="close"
-				size={30}
+				size={35}
 				color="white"
 			/>
 			<MaterialCommunityIcons

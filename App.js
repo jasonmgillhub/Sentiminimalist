@@ -6,13 +6,21 @@ import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
-	return <WelcomeScreen />;
+	return (
+		<View style={styles.appView}>
+			<ViewImageScreen />
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
 	appView: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		width: '100%',
+		height: '100%',
+		...Platform.select({
+			default: {
+				maxWidth: 440,
+			},
+		}),
 	},
 });
