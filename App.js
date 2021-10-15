@@ -1,43 +1,18 @@
 import React from 'react';
-import {
-	StyleSheet,
-	View,
-	ImageBackground,
-	// Image,
-	// TouchableWithoutFeedback,
-	// TouchableOpacity,
-	// TouchableHighlight,
-	// TouchableNativeFeedback,
-	// Button,
-	// Alert,
-	// Platform,
-	// SafeAreaView,
-	// StatusBar,
-} from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
+import CardTestScreen from './app/screens/CardTestScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
-// import {
-// 	useDimensions,
-// 	useDeviceOrientation,
-// } from '@react-native-community/hooks';
 
 export default function App() {
 	return <WelcomeScreen />;
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
-	image: {
+	appView: {
 		flex: 1,
 		justifyContent: 'center',
-	},
-	text: {
-		color: 'white',
-		fontSize: 42,
-		lineHeight: 84,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		backgroundColor: '#000000c0',
+		alignItems: 'center',
 	},
 });
