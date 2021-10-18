@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image, Button } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import colors from '../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -35,11 +35,6 @@ const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: '100%',
-	},
-	buttonsContainer: {
-		top: 40,
-		paddingLeft: 30,
-		paddingRight: 30,
 	},
 	closeIcon: {
 		position: 'absolute',
