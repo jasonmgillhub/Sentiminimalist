@@ -13,9 +13,9 @@ const listings = [
 	},
 	{
 		id: 1,
-		title: 'Rad Jacket 2',
+		title: 'Sectional Couch',
 		price: '200',
-		image: require('../assets/jacket.jpg'),
+		image: require('../assets/couch.jpg'),
 	},
 ];
 
