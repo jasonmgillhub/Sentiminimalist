@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import Icon from '../components/Icon';
 import ListItem from '../components/ListItem';
 import Screen from '../components/Screen';
@@ -30,7 +30,7 @@ const logOutButton = {
 	},
 };
 
-function MyAccountScreen() {
+function AccountScreen() {
 	return (
 		<Screen style={styles.container}>
 			<ListItem
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default MyAccountScreen;
+export default AccountScreen;
