@@ -3,13 +3,14 @@ import { StyleSheet, Text, View, Platform } from 'react-native';
 import CardTestScreen from './app/screens/CardTestScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
+import MyAccountScreen from './app/screens/MyAccountScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
 	return (
 		// <View style={styles.appView}>
-		<MessagesScreen />
+		<MyAccountScreen />
 		// </View>
 	);
 }
