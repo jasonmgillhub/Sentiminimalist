@@ -1,30 +1,33 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import IconButton from '../components/IconButton';
+import Icon from '../components/Icon';
 import ListItem from '../components/ListItem';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
 
-const menuButtons = [
+const menuItems = [
 	{
-		id: 0,
 		title: 'My Listings',
-		icon: 'format-list-bulleted',
-		color: 'primary',
+		icon: {
+			name: 'format-list-bulleted',
+			backgroundColor: colors.primary,
+		},
 	},
 	{
-		id: 1,
 		title: 'My Messages',
-		icon: 'email',
-		color: 'secondary',
+		icon: {
+			name: 'email',
+			backgroundColor: colors.secondary,
+		},
 	},
 ];
 
 const logOutButton = {
-	id: -1,
 	title: 'Log Out',
-	icon: 'logout',
-	color: 'yellow',
+	icon: {
+		name: 'logout',
+		backgroundColor: colors.yellow,
+	},
 };
 
 function MyAccountScreen() {
@@ -37,20 +40,28 @@ function MyAccountScreen() {
 			/>
 			<FlatList
 				style={styles.menuButtons}
-				data={menuButtons}
-				keyExtractor={(button) => button.id.toString()}
+				data={menuItems}
+				keyExtractor={(button) => button.title}
 				renderItem={({ item }) => (
-					<IconButton
+					<ListItem
 						title={item.title}
-						icon={item.icon}
-						color={item.color}
+						IconComponent={
+							<Icon
+								name={item.icon.name}
+								backgroundColor={item.icon.backgroundColor}
+							/>
+						}
 					/>
 				)}
 			/>
-			<IconButton
+			<ListItem
 				title={logOutButton.title}
-				icon={logOutButton.icon}
-				color={'yellow'}
+				IconComponent={
+					<Icon
+						name={logOutButton.icon.name}
+						backgroundColor={logOutButton.icon.backgroundColor}
+					/>
+				}
 			/>
 		</Screen>
 	);
@@ -61,8 +72,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.light,
 	},
 	menuButtons: {
-		paddingTop: 40,
-		paddingBottom: 20,
+		marginVertical: 25,
 	},
 });
 
