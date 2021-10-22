@@ -22,7 +22,7 @@ function RegisterScreen() {
 				<AppFormField
 					icon="account"
 					placeholder="Name"
-					autoCapitalize
+					autoCapitalize="words"
 					autoCorrect={false}
 					name="name"
 				/>

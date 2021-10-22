@@ -12,6 +12,7 @@ import defaultStyles from '../config/styles';
 import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
+import colors from '../config/colors';
 
 function AppPicker({ icon, items, placeholder, selectedItem, onSelectItem }) {
 	const [modalVisible, setModalVisible] = useState(false);
@@ -28,7 +29,17 @@ function AppPicker({ icon, items, placeholder, selectedItem, onSelectItem }) {
 							color={defaultStyles.colors.medium}
 						/>
 					)}
-					<AppText style={[defaultStyles.text, styles.text]}>
+					<AppText
+						style={[
+							defaultStyles.text,
+							styles.text,
+							{
+								color: selectedItem
+									? colors.black
+									: colors.medium,
+							},
+						]}
+					>
 						{selectedItem ? selectedItem.label : placeholder}
 					</AppText>
 					<MaterialCommunityIcons

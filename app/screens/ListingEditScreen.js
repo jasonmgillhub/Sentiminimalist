@@ -22,10 +22,10 @@ const categories = [
 ];
 
 const validationSchema = Yup.object().shape({
-	category: Yup.object().required().label('Category'),
+	category: Yup.object().required().nullable().label('Category'),
 	description: Yup.string().label('Description'),
-	price: Yup.number().required().positive().label('Price'),
-	title: Yup.string().required().min(4).label('Title'),
+	price: Yup.number().required().min(1).max(10000).label('Price'),
+	title: Yup.string().required().min(1).label('Title'),
 });
 
 function ListingEditScreen() {
