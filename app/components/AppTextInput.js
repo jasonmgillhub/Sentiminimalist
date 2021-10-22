@@ -14,22 +14,29 @@ function AppTextInput({ icon, ...otherProps }) {
 					color={defaultStyles.colors.medium}
 				/>
 			)}
-			<TextInput style={defaultStyles.text} {...otherProps} />
+			<TextInput
+				style={[defaultStyles.text, styles.input]}
+				{...otherProps}
+			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
+		alignItems: 'center',
 		backgroundColor: defaultStyles.colors.light,
 		borderRadius: 25,
 		flexDirection: 'row',
-		width: '100%',
-		padding: 15,
 		marginVertical: 10,
+		padding: 15,
+		width: '100%',
 	},
 	icon: {
 		marginRight: 10,
+	},
+	input: {
+		width: '100%',
 	},
 });
 
