@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import ListItem from '../components/ListItem';
-import ListItemDeleteAction from '../components/ListItemDeleteAction';
-import ListItemSendAction from '../components/ListItemSendAction';
-import ListItemSeparator from '../components/ListItemSeparator';
+import {
+	ListItem,
+	ListItemDeleteAction,
+	ListItemSendAction,
+	ListItemSeparator,
+} from '../components/lists';
 import Screen from '../components/Screen';
 
 const initialMessages = [
 	{
 		id: 1,
-		title: 'T1',
-		description: 'D1',
+		title: `Mosh Hamedani`,
+		description: `Hey! Is this item still available?`,
 		image: require('../assets/mosh.jpg'),
 	},
 	{
 		id: 2,
-		title: 'T2',
-		description: 'D2',
-		image: require('../assets/mosh.jpg'),
-	},
-	{
-		id: 3,
-		title: 'T3',
-		description: 'D3',
+		title: 'Mosh Hamedani',
+		description: `I'm interested in this item. When will you be able to post it?`,
 		image: require('../assets/mosh.jpg'),
 	},
 ];
@@ -53,6 +49,7 @@ function MessagesScreen(props) {
 							/>
 						)}
 						renderLeftActions={() => <ListItemSendAction />}
+						showChevrons
 					/>
 				)}
 				ItemSeparatorComponent={() => <ListItemSeparator />}

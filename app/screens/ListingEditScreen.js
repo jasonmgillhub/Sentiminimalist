@@ -1,23 +1,62 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 
-import { AppForm, AppFormField, SubmitButton } from '../components/forms';
-import AppFormPicker from '../components/forms/AppFormPicker';
+import {
+	AppForm,
+	AppFormField as Field,
+	AppFormPicker as Picker,
+	SubmitButton,
+} from '../components/forms';
 import Screen from '../components/Screen';
+import colors from '../config/colors';
 
 const categories = [
 	{
-		value: 0,
-		label: 'Up',
-	},
-	{
 		value: 1,
-		label: 'Down',
+		label: 'Furniture',
+		icon: 'floor-lamp',
 	},
 	{
 		value: 2,
-		label: 'Left',
+		label: 'Cars',
+		icon: 'car',
+	},
+	{
+		value: 3,
+		label: 'Cameras',
+		icon: 'camera',
+	},
+	{
+		value: 4,
+		label: 'Games',
+		icon: 'cards',
+	},
+	{
+		value: 5,
+		label: 'Clothing',
+		icon: 'shoe-heel',
+	},
+	{
+		value: 6,
+		label: 'Sports',
+		icon: 'basketball',
+	},
+	{
+		value: 7,
+		label: 'Movies & Music',
+		icon: 'headphones',
+	},
+	{
+		value: 8,
+		label: 'Books',
+		icon: 'book-open-variant',
+	},
+	{
+		value: 99,
+		label: 'Other',
+		icon: 'border-none-variant',
 	},
 ];
 
@@ -33,34 +72,42 @@ function ListingEditScreen() {
 		<Screen style={styles.container}>
 			<AppForm
 				initialValues={{
-					category: '',
+					category: null,
 					description: '',
-					price: 0,
+					price: '',
 					title: '',
 				}}
 				onSubmit={(values) => console.log(values)}
 				validationSchema={validationSchema}
 			>
-				<AppFormField
-					placeholder="Title"
+				<Field
 					autoCapitalize="sentences"
 					autoCorrect
+					maxLength={255}
 					name="title"
+					placeholder="Title"
 				/>
-				<AppFormField
-					keyboardType="number-pad"
-					placeholder="Price"
+				<Field
+					keyboardType="numeric"
+					maxLength={8}
 					name="price"
+					placeholder="Price"
+					width={120}
 				/>
-				<AppFormPicker
+				<Picker
 					items={categories}
 					name="category"
+					PickerItemComponent={CategoryPickerItem}
 					placeholder="Category"
+					width="50%"
 				/>
-				<AppFormField
+				<Field
 					autoCapitalize
 					autoCapitalize="sentences"
+					maxLength={255}
+					multiline
 					name="description"
+					numberOfLines={3}
 					placeholder="Description"
 				/>
 				<SubmitButton title="Post" />
