@@ -9,15 +9,15 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultStyles from '../config/styles';
-import AppText from './AppText';
+import Text from './Text';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 import colors from '../config/colors';
 
 function AppPicker({
-	beautiful,
 	icon,
 	items,
+	numberOfColumns = 1,
 	onSelectItem,
 	PickerItemComponent = PickerItem,
 	placeholder,
@@ -30,7 +30,15 @@ function AppPicker({
 		<>
 			<TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
 				<View style={[styles.container, { width }]}>
-					{icon && (
+					{selectedItem && (
+						<MaterialCommunityIcons
+							style={styles.icon}
+							name={selectedItem.icon}
+							size={20}
+							color={selectedItem.backgroundColor}
+						/>
+					)}
+					{icon && !selectedItem && (
 						<MaterialCommunityIcons
 							style={styles.icon}
 							name={icon}
@@ -38,7 +46,7 @@ function AppPicker({
 							color={defaultStyles.colors.medium}
 						/>
 					)}
-					<AppText
+					<Text
 						style={[
 							defaultStyles.text,
 							styles.text,
@@ -50,7 +58,7 @@ function AppPicker({
 						]}
 					>
 						{selectedItem ? selectedItem.label : placeholder}
-					</AppText>
+					</Text>
 					<MaterialCommunityIcons
 						name="chevron-down"
 						size={20}
@@ -67,8 +75,10 @@ function AppPicker({
 					<FlatList
 						data={items}
 						keyExtractor={(item) => item.value.toString()}
+						numColumns={numberOfColumns}
 						renderItem={({ item }) => (
 							<PickerItemComponent
+								item={item}
 								label={item.label}
 								onPress={() => {
 									setModalVisible(false);
@@ -91,6 +101,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		padding: 15,
 		marginVertical: 10,
+		alignItems: 'center',
 	},
 	icon: {
 		marginRight: 10,

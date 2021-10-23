@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import colors from '../../config/colors';
-import AppText from '../AppText';
+import Text from '../Text';
 
 function ListItem({
 	image,
@@ -26,13 +26,13 @@ function ListItem({
 					{IconComponent}
 					{image && <Image style={styles.image} source={image} />}
 					<View style={styles.detailsContainer}>
-						<AppText numberOfLines={1} style={styles.title}>
+						<Text numberOfLines={1} style={styles.title}>
 							{title}
-						</AppText>
+						</Text>
 						{subTitle && (
-							<AppText numberOfLines={2} style={styles.subTitle}>
+							<Text numberOfLines={2} style={styles.subTitle}>
 								{subTitle}
-							</AppText>
+							</Text>
 						)}
 					</View>
 					{showChevrons && (
@@ -49,7 +49,6 @@ function ListItem({
 }
 
 const styles = StyleSheet.create({
-	// chevron: { paddingRight: 10 },
 	container: {
 		flexDirection: 'row',
 		padding: 15,
