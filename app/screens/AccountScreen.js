@@ -34,9 +34,9 @@ function AccountScreen() {
 	return (
 		<Screen style={styles.container}>
 			<ListItem
-				title={'Mosh Hamedani'}
-				subTitle={'programmingwithmosh@gmail.com'}
-				image={require('../assets/mosh.jpg')}
+				title={'Jason Gill'}
+				subTitle={'jasonmgill@gmail.com'}
+				image={require('../assets/jason.jpg')}
 			/>
 			<FlatList
 				style={styles.menuButtons}
