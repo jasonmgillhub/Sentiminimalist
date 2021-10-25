@@ -1,8 +1,11 @@
 import React from 'react';
-import ListingEditScreen from './app/screens/ListingEditScreen';
-import RegisterScreen from './app/screens/RegisterScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
+import ImageInputList from './app/components/ImageInputList';
+import Screen from './app/components/Screen';
 
 export default function App() {
-	return <ListingEditScreen />;
+	return (
+		<Screen>
+			<ImageInputList />
+		</Screen>
+	);
 }
