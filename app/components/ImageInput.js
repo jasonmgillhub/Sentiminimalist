@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import {
-	Button,
+	Alert,
 	Image,
 	StyleSheet,
-	TouchableHighlight,
-	TouchableOpacity,
+	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
 import * as ImagePicker from 'expo-image-picker';
+
 import colors from '../config/colors';
 
-function ImageInput(props) {
-	const [imageUri, setImageUri] = useState();
+function ImageInput({ imageUri, onChangeImage }) {
+	const handlePress = () => {
+		if (!imageUri) {
+			selectImage();
+		} else {
+			Alert.alert(
+				'Delete or Change',
+				`Would you like to delete or change your image?`,
+				[
+					{
+						text: 'Delete',
+						onPress: () => onChangeImage(null),
+					},
+					{
+						text: 'Change',
+						onPress: () => selectImage(),
+					},
+					{
+						text: 'No',
+					},
+				]
+			);
+		}
+	};
 
 	const requestPermission = async () => {
 		const { granted } =
@@ -26,9 +47,13 @@ function ImageInput(props) {
 
 	const selectImage = async () => {
 		try {
-			const result = await ImagePicker.launchImageLibraryAsync();
+			const result = await ImagePicker.launchImageLibraryAsync({
+				mediaTypes: ImagePicker.MediaTypeOptions.Images,
+				quality: 0.5,
+			});
+
 			if (!result.cancelled) {
-				setImageUri(result.uri);
+				onChangeImage(result.uri);
 			}
 		} catch (error) {
 			console.error('Error reading an image');
@@ -36,16 +61,12 @@ function ImageInput(props) {
 	};
 
 	useEffect(() => {
-		function request() {
-			requestPermission();
-		}
-
-		request();
+		requestPermission();
 	}, []);
 
 	return (
-		<TouchableOpacity onPress={selectImage} style={styles.container}>
-			<>
+		<TouchableWithoutFeedback onPress={handlePress}>
+			<View style={styles.container}>
 				{!imageUri && (
 					<MaterialCommunityIcons
 						name="camera"
@@ -56,8 +77,8 @@ function ImageInput(props) {
 				{imageUri && (
 					<Image source={{ uri: imageUri }} style={styles.image} />
 				)}
-			</>
-		</TouchableOpacity>
+			</View>
+		</TouchableWithoutFeedback>
 	);
 }
 
@@ -68,13 +89,12 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		height: 100,
 		justifyContent: 'center',
-		margin: 10,
 		overflow: 'hidden',
 		width: 100,
 	},
 	image: {
-		height: 100,
-		width: 100,
+		height: '100%',
+		width: '100%',
 	},
 });
 
