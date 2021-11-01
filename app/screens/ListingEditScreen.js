@@ -6,6 +6,7 @@ import CategoryPickerItem from '../components/CategoryPickerItem';
 import {
 	Form,
 	FormField as Field,
+	FormImagePicker,
 	FormPicker as Picker,
 	SubmitButton,
 } from '../components/forms';
@@ -73,6 +74,7 @@ const validationSchema = Yup.object().shape({
 	description: Yup.string().label('Description'),
 	price: Yup.number().required().min(1).max(10000).label('Price'),
 	title: Yup.string().required().min(1).label('Title'),
+	images: Yup.array().min(1, 'Please select at least one image.'),
 });
 
 function ListingEditScreen() {
@@ -84,10 +86,12 @@ function ListingEditScreen() {
 					description: '',
 					price: '',
 					title: '',
+					images: [],
 				}}
 				onSubmit={(values) => console.log(values)}
 				validationSchema={validationSchema}
 			>
+				<FormImagePicker name="images" />
 				<Field
 					autoCapitalize="sentences"
 					autoCorrect
