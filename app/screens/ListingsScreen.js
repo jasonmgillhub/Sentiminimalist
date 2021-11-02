@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import Card from '../components/Card';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
@@ -19,18 +19,20 @@ const listings = [
 	},
 ];
 
-function ListingsScreen(props) {
+function ListingsScreen() {
 	return (
 		<Screen style={styles.screen}>
 			<FlatList
 				data={listings}
 				keyExtractor={(listing) => listing.id.toString()}
 				renderItem={({ item }) => (
-					<Card
-						title={item.title}
-						subTitle={'$' + item.price}
-						image={item.image}
-					/>
+					<TouchableWithoutFeedback>
+						<Card
+							title={item.title}
+							subTitle={'$' + item.price}
+							image={item.image}
+						/>
+					</TouchableWithoutFeedback>
 				)}
 			/>
 		</Screen>

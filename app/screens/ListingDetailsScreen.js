@@ -4,16 +4,17 @@ import Text from '../components/Text';
 import { ListItem } from '../components/lists';
 import colors from '../config/colors';
 
-function ListingDetailsScreen(props) {
+function ListingDetailsScreen({
+	title = 'Red jacket for sale',
+	price = '$100',
+	image = require('../assets/jacket.jpg'),
+}) {
 	return (
 		<View style={styles.view}>
-			<Image
-				style={styles.image}
-				source={require('../assets/jacket.jpg')}
-			/>
+			<Image style={styles.image} source={image} />
 			<View style={styles.detailsContainer}>
-				<Text style={styles.title}>Red jacket for sale</Text>
-				<Text style={styles.price}>$100</Text>
+				<Text style={styles.title}>{title}</Text>
+				<Text style={styles.price}>{price}</Text>
 				<View style={styles.userContainer}>
 					<ListItem
 						image={require('../assets/jason.jpg')}
